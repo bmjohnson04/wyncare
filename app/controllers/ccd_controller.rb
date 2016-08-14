@@ -12,7 +12,7 @@ class CcdController < ApplicationController
 
       puts 'development'
 
-      url = "https://services.development.carecloud.com/ccd/0029-1418297147"
+      url = "https://services.development.carecloud.com/ccd/2460-9271986201"
 
       health_record =  open(url).read
 
