@@ -1,12 +1,12 @@
 class CcdController < ApplicationController
+  require 'open-uri'
+  require 'json'
 
 
   ###########################################
   ## this action returns the full CCD as JSON
   ###########################################
   def show_full_ccd
-    require 'open-uri'
-    require 'json'
 
     if Rails.env.development?
 
@@ -33,8 +33,6 @@ class CcdController < ApplicationController
   ## this action returns just the user's meds
   ###########################################
   def show_meds
-    require 'open-uri'
-    require 'json'
 
     if Rails.env.development?
 
