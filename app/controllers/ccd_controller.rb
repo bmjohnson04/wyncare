@@ -1,15 +1,63 @@
 class CcdController < ApplicationController
-  def show
+
+
+  ###########################################
+  ## this action returns the full CCD as JSON
+  ###########################################
+  def show_full_ccd
     require 'open-uri'
+    require 'json'
 
-    #  url = "http://services.development.carecloud.local/ccd/2460-9271986201"  # original from Grady
-    #  url = "http://services.development.carecloud.local/ccd/0029-1418297147"  # pattis patient
+    if Rails.env.development?
 
-     url = 'http://ruby.bastardsbook.com/files/fundamentals/hamlet.txt'
+      puts 'development'
 
-    @contents =  open(url).read
+      url = "http://services.development.carecloud.local/ccd/0029-1418297147"
 
-    render json: @contents
+      health_record =  open(url).read
+
+      response = JSON.parse(health_record)
+
+      @api_response = response
+
+      render json: @api_response
+    elsif Rails.env.production?  # Production
+      puts "not development"
+      file = File.open("ccd.json", "r")
+      @api_response = file.read
+      render json: @api_response
+    end
+  end
+
+  ###########################################
+  ## this action returns just the user's meds
+  ###########################################
+  def show_meds
+    require 'open-uri'
+    require 'json'
+
+    if Rails.env.development?
+
+      url = "http://services.development.carecloud.local/ccd/0029-1418297147"
+
+      health_record =  open(url).read
+
+      meds_array = JSON.parse(health_record)["visit_medications"]["medication_list"]
+
+      response_array = []
+
+      meds_array.each do |med|
+        response_array.push med["drug_name"]
+      end
+
+      @api_response = response_array.to_json
+      render json: @api_response
+    elsif Rails.env.production?
+      puts "not development"
+      file = File.open("meds.json", "r")
+      @api_response = file.read
+      render json: @api_response
+    end
   end
 
   def home
