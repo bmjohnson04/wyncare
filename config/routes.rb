@@ -7,7 +7,7 @@ Rails.application.routes.draw do
 
     get '/', to: 'ccd#home'
     get '/', to: 'fbm#home'
-    get '/fbm_msg', to:'FbmController#fbm_msg'
+    get '/fbm_msg', to:'fbm_controller#fbm_msg'
     get '/show_full_ccd', to: 'ccd#show_full_ccd'
     get '/show_meds', to: 'ccd#show_meds'
 
