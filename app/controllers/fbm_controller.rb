@@ -14,6 +14,10 @@ class FbmController < ApplicationController
   end
 
   # def give_meds
-  #   format.json{ render json: '[{"text": "Hellooo, Nurse!"}]', status: :ok }
+  #   file = File.open("app/views/ccd.xml", "r")
+  #   @api_response = file.read
+  #   respond_to do | format |
+  #     format.xml{ render xml: @api_response, status: :ok }
+  #   end
   # end
 end
