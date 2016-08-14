@@ -8,7 +8,7 @@ class FbmController < ApplicationController
   def give_ccd
 
     res = [{text: 'Found it! :D'},
-           {attachment: {type: 'file', payload: {url: 'https://raw.githubusercontent.com/chb/sample_ccdas/master/Allscripts%20Samples/Sunrise%20Clinical%20Manager/C-CDA_101693_20130617091427_Kidd_Kari%20CCDA.xml'}}}]
+           {attachment: {type: 'xml', payload: {url: patient_export_url(format 'xml')}}}]
 
     respond_to do | format |
       format.json{ render json: res, status: :ok }
@@ -16,10 +16,12 @@ class FbmController < ApplicationController
   end
 
   def patient_export
-    file = File.open("app/views/ccd.xml", "r")
-    @api_response = file.read
+    # file = File.open("app/views/ccd.xml", "r")
+    # @api_response = file.read
     respond_to do | format |
-      format.xml{ render xml: @api_response, status: :ok }
+      format.xml{
+        send_file 'app/views/ccd.xml', type: :xml
+      }
     end
   end
   # def give_meds
