@@ -7,7 +7,7 @@ Rails.application.routes.draw do
 
     get '/', to: 'ccd#home'
     # get '/', to: 'fbm#home'
-    get '/get_stuff', to:'fbm#get_stuff'
+    # get '/get_sturender json: @api_responseff', to:'fbm#get_stuff'
     get '/give_ccd', to:'fbm#give_ccd'
     get '/show_full_ccd', to: 'ccd#show_full_ccd'
     get '/show_meds', to: 'ccd#show_meds'
