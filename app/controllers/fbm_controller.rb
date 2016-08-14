@@ -8,7 +8,7 @@ class FbmController < ApplicationController
   def give_ccd
 
     res = [{text: 'Found it! :D'},
-           {attachment: {type: 'xml', payload: {url: patient_export_url(format 'xml')}}}]
+           {attachment: {type: 'file', payload: {url: patient_export_url(format 'xml')}}}]
 
     respond_to do | format |
       format.json{ render json: res, status: :ok }
