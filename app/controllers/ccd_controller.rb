@@ -12,7 +12,7 @@ class CcdController < ApplicationController
 
       puts 'development'
 
-      url = "http://services.development.carecloud.local/ccd/0029-1418297147"
+      url = "https://services.development.carecloud.com/ccd/0029-1418297147"
 
       health_record =  open(url).read
 
@@ -38,7 +38,7 @@ class CcdController < ApplicationController
 
     if Rails.env.development?
 
-      url = "http://services.development.carecloud.local/ccd/0029-1418297147"
+      url = "https://services.development.carecloud.com/ccd/0029-1418297147"
 
       health_record =  open(url).read
 
