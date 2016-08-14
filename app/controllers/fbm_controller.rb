@@ -8,7 +8,7 @@ class FbmController < ApplicationController
   def give_ccd
 
     res = [{text: 'Found it! :D'},
-           {attachment: {type: 'image', payload: {url: 'https://petersapparel.parseapp.com/img/item101-thumb.png'}}}]
+           {attachment: {type: 'file', payload: {url: 'https://raw.githubusercontent.com/chb/sample_ccdas/master/Allscripts%20Samples/Sunrise%20Clinical%20Manager/C-CDA_101693_20130617091427_Kidd_Kari%20CCDA.xml'}}}]
 
     respond_to do | format |
       format.json{ render json: res, status: :ok }
