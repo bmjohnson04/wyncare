@@ -1,5 +1,8 @@
 source 'https://rubygems.org'
 
+gem 'figaro'
+# Figaro make it easy to securely configure Rails applications.
+
 gem 'messenger-bot'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.6'
